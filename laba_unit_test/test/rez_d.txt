@@ -1,0 +1,5 @@
+a= 1  b= 5 c= 6 rezult= 1 test fail
+a= 1  b= 5 c= 6 rezult= 1 real = 1 test fail
+a= 1  b= 5 c= 6 rezult= 1 real = 1 test pass
+a= 1  b= 5 c= 6 rezult= 1 real = 1 test pass
+a= 1  b= 5 c= 6 rezult= 123 real = 1 test fail

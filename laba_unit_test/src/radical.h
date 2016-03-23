@@ -8,6 +8,6 @@
         ERROR
     };
 
-    radix radical(radix data, int *err);
+    radix radical(radix *data, int *err);
 
 #endif // RADICAL_H

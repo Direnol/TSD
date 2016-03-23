@@ -12,21 +12,22 @@ int main (int argc, char *argv[])
 	}
 
 	int flg = 0;
-    radix data;
+    radix *data;
+	data = (radix *) malloc(sizeof(radix));
+	
+    data->a = atoi(argv[1]);
+	data->b = atoi(argv[2]);
+	data->c = atoi(argv[3]);
+	data->x1 = 0;
+	data->x2 = 0;
 
-    data.a = atoi(argv[1]);
-	data.b = atoi(argv[2]);
-	data.c = atoi(argv[3]);
-	data.x1 = 0;
-	data.x2 = 0;
-
-    data = radical(data, &flg);
+    radical(data, &flg);
 
 	if (flg != 0) {
 		printf ("no solutions!\n");
 		return EXIT_FAILURE;
 	}
 
-	printf ("x1 = %.2f x2 = %.2f\n", data.x1, data.x2);
+	printf ("x1 = %.2f x2 = %.2f\n", data->x1, data->x2);
 	return EXIT_SUCCESS;
 }

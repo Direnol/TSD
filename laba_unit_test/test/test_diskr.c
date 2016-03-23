@@ -4,36 +4,41 @@
 #include "../src/disk.h"
 #include "../src/struct.h"
 
-int main()
+int main(int argc, char *argv[])
 {
-	FILE *file;
-	char *file_name = "test_d.txt";
-	char input[30];
+	if (argc < 5) {
+        printf ("Not enough information\n");
+        return EXIT_FAILURE;
+	}
+	
 	char output[2][10] =
 	{
 	"test pass",
 	"test fail"
 	};
 
-    file = fopen( file_name, "input_test" );
+	radix *data;
+	data = (radix *) malloc(sizeof(radix));
+	
+	data->a = atoi(argv[1]);
+	data->b = atoi(argv[2]);
+	data->c = atoi(argv[3]);
+	int rezult = atoi(argv[4]);
 
-	fgets(input, 30, file);
-
-	radix data;
-	int rez;
-	data.a = atoi(&(input[0]));
-	data.b = atoi(&(input[3]));
-	data.c = atoi(&(input[6]));
-	rez = atoi(&(input[9]));
-
-	disk(data);
-
+	int diskr = disk(data);
 	int i;
-    // something
+	
+	if (diskr == rezult)
+		i = 0;
+	else 
+		i = 1;
+		
 	 FILE *out;
     out = fopen("rez_d.txt", "a");
-    fprintf(out, "a= %d  b= %d c= %d rez= %d %s\n", data.a, data.b, data.c, rez, output[i]);
+    fprintf(out, "a= %d  b= %d c= %d rezult= %d real = %d %s\n", data->a, data->b, data->c, rezult, diskr, output[i]);
     printf ("\n");
+    free(data);
+    fclose(out);
 
 	return 0;
 }
